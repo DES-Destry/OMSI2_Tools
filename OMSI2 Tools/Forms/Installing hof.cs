@@ -1,9 +1,11 @@
 ﻿using DESTRY.IO;
 using OMSI2_Tools.Properties;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OMSI2_Tools.Forms
@@ -14,6 +16,7 @@ namespace OMSI2_Tools.Forms
         private string HOF_PATH = "DHF63_7EGHO_F3245_DWKAD";
         private string INSTALLING_PATH = "Vehicles";
         private string HOF_EXT = ".hof";
+        private string BUS_EXT = ".bus";
         public Installing_hof()
         {
             InitializeComponent();
@@ -200,26 +203,32 @@ namespace OMSI2_Tools.Forms
             Update(null, null);
         }
 
-        private void Install(object sender, EventArgs e)
+        private async void Install(object sender, EventArgs e)
         {
             try
             {
-                string[] directories = Finder.FindDirectoryWhichExists(INSTALLING_PATH, HOF_EXT);
-                string[] files = Directory.GetFiles(HOF_PATH);
-                int size = directories.Length * files.Length;
+                string[] directories = Finder.FindDirectoryWhichExists(INSTALLING_PATH, BUS_EXT);
+                List<string> files = new List<string>();
+                foreach (string toadd in HofInstallList.CheckedItems)
+                {
+                    files.Add($@"{HOF_PATH}\{toadd}");
+                }
+                int size = directories.Length * files.Count;
                 InstallingProgress.Visible = true;
                 InstallingProgress.Maximum = size;
-                Size = new System.Drawing.Size(638, 600); 
+                Size = new System.Drawing.Size(638, 600);
                 foreach (string directory in directories)
                     foreach (string file in files)
                     {
                         try
                         {
-                            if (File.Exists(file) && Directory.Exists(directory))
-                                File.Copy(file, directory, true);
-                            InstallingProgress.Value += 1;
+                            await Task.Run(() =>
+                            {
+                                File.Copy(file, $@"{directory}\{Path.GetFileName(file)}", true);
+                                InstallingProgress.Value += 1; 
+                            });
                         }
-                        catch
+                        catch(Exception)
                         {
                             string title = "Error!";
                             string message = "Unknown error";
@@ -228,7 +237,7 @@ namespace OMSI2_Tools.Forms
                         }
                     }
             }
-            catch
+            catch(Exception)
             {
                 string title = "Error!";
                 string message = "This application need to exists in root folder of OMSI. Reinstall the OMSI2 Tools or try start this app as administrator.";
