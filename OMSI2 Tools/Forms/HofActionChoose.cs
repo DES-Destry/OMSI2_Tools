@@ -60,5 +60,22 @@ namespace OMSI2_Tools.Forms
             InfoLbl.Text = "";
         }
         #endregion
+
+        private void Install(object sender, EventArgs e)
+        {
+            Forms.Installing_hof install = new Installing_hof() { Opacity = 0 };
+            install.Show();                           
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(25);
+                Opacity -= 0.1;
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(25);
+                install.Opacity += 0.1;
+            }
+            Close();
+        }
     }
 }

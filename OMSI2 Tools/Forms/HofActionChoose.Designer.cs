@@ -89,6 +89,7 @@
             this.InstallButt.Text = "Install";
             this.InstallButt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.InstallButt.UseVisualStyleBackColor = true;
+            this.InstallButt.Click += new System.EventHandler(this.Install);
             this.InstallButt.MouseEnter += new System.EventHandler(this.InstallInfo);
             this.InstallButt.MouseLeave += new System.EventHandler(this.InstallInfoClear);
             // 
