@@ -77,5 +77,39 @@ namespace OMSI2_Tools.Forms
             }
             Close();
         }
+
+        private void Unistall(object sender, EventArgs e)
+        {
+            Forms.Deleting_hof delete = new Deleting_hof() { Opacity = 0 };
+            delete.Show();
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(25);
+                Opacity -= 0.1;
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(25);
+                delete.Opacity += 0.1;
+            }
+            Close();
+        }
+
+        private void Reinstall(object sender, EventArgs e)
+        {
+            Forms.Reinstall_hof reinstall = new Reinstall_hof() { Opacity = 0 };
+            reinstall.Show();
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(25);
+                Opacity -= 0.1;
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(25);
+                reinstall.Opacity += 0.1;
+            }
+            Close();
+        }
     }
 }

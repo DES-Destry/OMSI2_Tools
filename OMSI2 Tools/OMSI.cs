@@ -23,8 +23,7 @@ namespace OMSI2_Tools
 
         private void HofChoose(object sender, EventArgs e)
         {
-            Forms.HofActionChoose choose = new Forms.HofActionChoose();
-            choose.Opacity = 0;
+            Forms.HofActionChoose choose = new Forms.HofActionChoose() {Opacity = 0};
             choose.Show();
             for(int i = 0; i < 10; i++)
             {

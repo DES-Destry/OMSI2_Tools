@@ -110,6 +110,7 @@
             this.button1.Text = "Reinstall";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Reinstall);
             this.button1.MouseEnter += new System.EventHandler(this.ReinstallInfo);
             this.button1.MouseLeave += new System.EventHandler(this.ReinstallInfoClear);
             // 
@@ -130,6 +131,7 @@
             this.HofToolsButt.Text = "Uninstall";
             this.HofToolsButt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.HofToolsButt.UseVisualStyleBackColor = true;
+            this.HofToolsButt.Click += new System.EventHandler(this.Unistall);
             this.HofToolsButt.MouseEnter += new System.EventHandler(this.UninstallInfo);
             this.HofToolsButt.MouseLeave += new System.EventHandler(this.UninstallInfoClear);
             // 

@@ -33,8 +33,11 @@
             this.ExitButt = new System.Windows.Forms.Button();
             this.OMSI2Pctr = new System.Windows.Forms.PictureBox();
             this.HofToolsButt = new System.Windows.Forms.Button();
+            this.StatusLbl = new System.Windows.Forms.Label();
+            this.StatusPctr = new System.Windows.Forms.PictureBox();
             this.TopPn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OMSI2Pctr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusPctr)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPn
@@ -95,7 +98,7 @@
             this.HofToolsButt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
             this.HofToolsButt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HofToolsButt.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.HofToolsButt.Location = new System.Drawing.Point(603, 484);
+            this.HofToolsButt.Location = new System.Drawing.Point(603, 396);
             this.HofToolsButt.Name = "HofToolsButt";
             this.HofToolsButt.Size = new System.Drawing.Size(235, 54);
             this.HofToolsButt.TabIndex = 2;
@@ -103,12 +106,33 @@
             this.HofToolsButt.UseVisualStyleBackColor = true;
             this.HofToolsButt.Click += new System.EventHandler(this.HofChoose);
             // 
+            // StatusLbl
+            // 
+            this.StatusLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StatusLbl.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.StatusLbl.Location = new System.Drawing.Point(283, 229);
+            this.StatusLbl.Name = "StatusLbl";
+            this.StatusLbl.Size = new System.Drawing.Size(280, 80);
+            this.StatusLbl.TabIndex = 4;
+            this.StatusLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // StatusPctr
+            // 
+            this.StatusPctr.Location = new System.Drawing.Point(387, 151);
+            this.StatusPctr.Name = "StatusPctr";
+            this.StatusPctr.Size = new System.Drawing.Size(75, 75);
+            this.StatusPctr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.StatusPctr.TabIndex = 3;
+            this.StatusPctr.TabStop = false;
+            // 
             // OMSI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(850, 550);
+            this.ClientSize = new System.Drawing.Size(850, 462);
+            this.Controls.Add(this.StatusLbl);
+            this.Controls.Add(this.StatusPctr);
             this.Controls.Add(this.TopPn);
             this.Controls.Add(this.HofToolsButt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -118,6 +142,7 @@
             this.TopPn.ResumeLayout(false);
             this.TopPn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OMSI2Pctr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusPctr)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -129,6 +154,8 @@
         private System.Windows.Forms.Button ExitButt;
         private System.Windows.Forms.Label ToolsLbl;
         private System.Windows.Forms.Button HofToolsButt;
+        public System.Windows.Forms.PictureBox StatusPctr;
+        public System.Windows.Forms.Label StatusLbl;
     }
 }
 

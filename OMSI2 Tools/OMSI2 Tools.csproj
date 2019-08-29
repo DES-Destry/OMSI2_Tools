@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Deleting hof.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Deleting hof.Designer.cs">
+      <DependentUpon>Deleting hof.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HofActionChoose.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,12 @@
     <Compile Include="Forms\Installing hof.Designer.cs">
       <DependentUpon>Installing hof.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reinstall hof.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reinstall hof.Designer.cs">
+      <DependentUpon>Reinstall hof.cs</DependentUpon>
+    </Compile>
     <Compile Include="OMSI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,11 +81,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Deleting hof.resx">
+      <DependentUpon>Deleting hof.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HofActionChoose.resx">
       <DependentUpon>HofActionChoose.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Installing hof.resx">
       <DependentUpon>Installing hof.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reinstall hof.resx">
+      <DependentUpon>Reinstall hof.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OMSI.resx">
       <DependentUpon>OMSI.cs</DependentUpon>
@@ -136,6 +154,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Uncheck All Mouse Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wrong.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
