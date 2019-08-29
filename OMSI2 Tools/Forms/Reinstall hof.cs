@@ -252,83 +252,97 @@ namespace OMSI2_Tools.Forms
                 InstallingProgress.Maximum = size;
                 Size = new Size(638, 600);
                 InstallingProgress.Visible = true;
-                await Task.Run(() =>
+                //DELETING
+                foreach (string dir in dirs)
                 {
-                    //DELETING
-                    foreach (string dir in dirs)
-                    {
-                        InstallingProgress.Value += 1;
-                        string[] filesdel = Directory.GetFiles(dir);
-                        foreach (string file in filesdel)
-                        {
-                            if (Path.GetExtension(file) == HOF_EXT)
-                                File.Delete(file);
-                        }
-                    }
-
-                    //INSTALLING
-                    foreach (string directory in directories)
-                        foreach (string file in files)
-                        {
-                            try
-                            {
-                                File.Copy(file, $@"{directory}\{Path.GetFileName(file)}", true);
-                                InstallingProgress.Value += 1;
-                            }
-                            catch (Exception)
-                            {
-                                string title = "Error!";
-                                string message = "Unknown error";
-                                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                                MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-                            }
-                        }
-                    if (InstallingProgress.Value == size)
-                    {
-                        OMSI omsi = new OMSI() { Opacity = 0 };
-                        omsi.StatusLbl.Text = "Reinstalling was successful!";
-                        omsi.StatusPctr.Image = Resources.Success;
-                        omsi.Show();
-                        //for (int i = 0; i < 10; i++)
-                        //{
-                        //    Thread.Sleep(25);
-                        //    Opacity -= 0.1;
-                        //}
-                        //for (int i = 0; i < 10; i++)
-                        //{
-                        //    Thread.Sleep(25);
-                        //    omsi.Opacity += 0.1;
-                        //}
-                        Close();
-                    }
-                    else
-                    {
-                        OMSI omsi = new OMSI() { Opacity = 0 };
-                        omsi.StatusLbl.Text = "Something went wrong...";
-                        omsi.StatusPctr.Image = Resources.Wrong;
-                        omsi.Show();
-                        for (int i = 0; i < 10; i++)
-                        {
-                            Thread.Sleep(25);
-                            Opacity -= 0.1;
-                        }
-                        for (int i = 0; i < 10; i++)
-                        {
-                            Thread.Sleep(25);
-                            omsi.Opacity += 0.1;
-                        }
-                        Close();
-                    }
+                    InstallingProgress.Value += 1;
+                    string[] filesdel = Directory.GetFiles(dir);
+                    Deleting(filesdel);
                 }
-                );
+
+                //INSTALLING
+                Installing(directories, files.ToArray());
+                if (InstallingProgress.Value == size)
+                {
+                    OMSI omsi = new OMSI() { Opacity = 0 };
+                    omsi.StatusLbl.Text = "Reinstalling was successful!";
+                    omsi.StatusPctr.Image = Resources.Success;
+                    omsi.Show();
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Thread.Sleep(25);
+                        Opacity -= 0.1;
+                    }
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Thread.Sleep(25);
+                        omsi.Opacity += 0.1;
+                    }
+                    Close();
+                }
+                else
+                {
+                    OMSI omsi = new OMSI() { Opacity = 0 };
+                    omsi.StatusLbl.Text = "Something went wrong...";
+                    omsi.StatusPctr.Image = Resources.Wrong;
+                    omsi.Show();
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Thread.Sleep(25);
+                        Opacity -= 0.1;
+                    }
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Thread.Sleep(25);
+                        omsi.Opacity += 0.1;
+                    }
+                    Close();
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 string title = "Error!";
                 string message = "This application need to exists in root folder of OMSI. Reinstall the OMSI2 Tools or try start this app as administrator.";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
             }
+        }
+
+        async void Deleting(string[] filesToDelete)
+        {
+            await Task.Run(() =>
+            {
+                foreach (string file in filesToDelete)
+                {
+                    if (Path.GetExtension(file) == HOF_EXT)
+                        File.Delete(file);
+                }
+            });
+        }
+
+        async void Installing(string[] directories, string[] files)
+        {
+            await Task.Run(() =>
+            {
+                foreach (string directory in directories)
+                {
+                    foreach (string file in files)
+                    {
+                        try
+                        {
+                            File.Copy(file, $@"{directory}\{Path.GetFileName(file)}", true);
+                            InstallingProgress.Value += 1;
+                        }
+                        catch (Exception)
+                        {
+                            string title = "Error!";
+                            string message = "Unknown error";
+                            MessageBoxButtons buttons = MessageBoxButtons.OK;
+                            MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            });
         }
     }
 }

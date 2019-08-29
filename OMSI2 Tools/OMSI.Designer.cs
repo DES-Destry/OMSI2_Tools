@@ -35,6 +35,7 @@
             this.HofToolsButt = new System.Windows.Forms.Button();
             this.StatusLbl = new System.Windows.Forms.Label();
             this.StatusPctr = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.TopPn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OMSI2Pctr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatusPctr)).BeginInit();
@@ -43,6 +44,7 @@
             // TopPn
             // 
             this.TopPn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.TopPn.Controls.Add(this.label1);
             this.TopPn.Controls.Add(this.ToolsLbl);
             this.TopPn.Controls.Add(this.ExitButt);
             this.TopPn.Controls.Add(this.OMSI2Pctr);
@@ -125,6 +127,16 @@
             this.StatusPctr.TabIndex = 3;
             this.StatusPctr.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(373, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(417, 26);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "omsi2mod.ru edition";
+            // 
             // OMSI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,6 +168,7 @@
         private System.Windows.Forms.Button HofToolsButt;
         public System.Windows.Forms.PictureBox StatusPctr;
         public System.Windows.Forms.Label StatusLbl;
+        private System.Windows.Forms.Label label1;
     }
 }
 
